@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transport de palettes pour les entreprises</title>
+  <meta name="description"
+    content="Transport de vos palettes partout en France et en Europe : messagerie palettisée, express, lots complets. Devis en ligne en 2 minutes." />
+  <meta name="theme-color" content="#060a12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Fond spécial : réseau routier animé -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="bg-vignette" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="brand" aria-label="Accueil - Transport de palettes">
+      <span class="brand-mark">
+        <svg viewBox="0 0 32 32" width="30" height="30" fill="none">
+          <path d="M3 21h26M5 21v4M16 21v4M27 21v4" stroke="url(#g1)" stroke-width="2.4" stroke-linecap="round" />
+          <rect x="6" y="10" width="9" height="8" rx="1.5" stroke="url(#g1)" stroke-width="2" />
+          <rect x="17" y="10" width="9" height="8" rx="1.5" stroke="url(#g1)" stroke-width="2" />
+          <rect x="11.5" y="3" width="9" height="5.5" rx="1.5" stroke="url(#g1)" stroke-width="2" />
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#ffc766" />
+              <stop offset="1" stop-color="#ff7a1a" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand-name">Transporteur<small>Transport &amp; logistique</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+      <a href="#services">Services</a>
+      <a href="#process">Fonctionnement</a>
+      <a href="#reseau">Réseau</a>
+      <a href="#faq">FAQ</a>
+      <a href="#devis" class="btn btn-small">Demander un devis</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu"
+      aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-text reveal">
+        <p class="eyebrow"><span class="dot"></span> Transporteur de palettes · France &amp; Europe</p>
+        <h1>Vos palettes,<br /><em>là où il faut,</em><br />quand il faut.</h1>
+        <p class="lead">Messagerie palettisée, express et lots complets pour les entreprises exigeantes. Une flotte
+          moderne, un suivi précis et des équipes qui tiennent leurs engagements.</p>
+        <div class="hero-cta">
+          <a href="#devis" class="btn">Obtenir un devis gratuit
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+          <a href="#process" class="btn btn-ghost">Comment ça marche</a>
+        </div>
+        <ul class="hero-stats">
+          <li><strong data-count="12400" data-suffix="+">0</strong><span>palettes livrées / mois</span></li>
+          <li><strong data-count="98" data-suffix="%">0</strong><span>livraisons à l'heure</span></li>
+          <li><strong data-count="24" data-suffix="h">0</strong><span>délai moyen France</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" style="--d:.15s">
+        <div class="pallet-stage">
+          <svg id="palletSvg" viewBox="0 0 520 440" aria-label="Palettes empilées" role="img"></svg>
+          <div class="float-card fc-track glass">
+            <div class="fc-head"><span class="pulse"></span> Suivi en direct</div>
+            <div class="fc-route"><b>Lyon</b><span class="fc-line"><i></i></span><b>Paris</b></div>
+            <div class="fc-meta"><span>12 palettes · 7,2 t</span><span>Arrivée 14:20</span></div>
+          </div>
+          <div class="float-card fc-ok glass">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3dd6c6" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 12.5l2.7 2.7L16 9.5" />
+            </svg>
+            <div><b>Livré</b><span>Preuve de livraison signée</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANDEAU -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Palette Europe 120×80</span><span>◆</span><span>Messagerie palettisée</span><span>◆</span><span>Express
+          J+1</span><span>◆</span><span>Lot complet 33 palettes</span><span>◆</span><span>Hayon
+          élévateur</span><span>◆</span><span>Suivi GPS</span><span>◆</span>
+        <span>Palette Europe 120×80</span><span>◆</span><span>Messagerie palettisée</span><span>◆</span><span>Express
+          J+1</span><span>◆</span><span>Lot complet 33 palettes</span><span>◆</span><span>Hayon
+          élévateur</span><span>◆</span><span>Suivi GPS</span><span>◆</span>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="section container" id="services">
+      <header class="section-head reveal">
+        <p class="eyebrow">Nos services</p>
+        <h2>Une solution pour chaque type de chargement</h2>
+        <p class="lead">De la palette isolée au camion complet, nous adaptons le transport à votre volume, votre budget
+          et vos délais.</p>
+      </header>
+      <div class="cards">
+        <article class="card glass reveal">
+          <div class="card-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7l9-4 9 4-9 4-9-4z" />
+              <path d="M3 7v10l9 4 9-4V7" />
+              <path d="M12 11v10" />
+            </svg></div>
+          <h3>Messagerie palettisée</h3>
+          <p>De 1 à 6 palettes, mutualisées sur nos lignes régulières. Le meilleur rapport qualité-prix pour vos
+            expéditions courantes.</p>
+          <span class="tag">J+1 à J+3</span>
+        </article>
+        <article class="card glass reveal" style="--d:.08s">
+          <div class="card-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+            </svg></div>
+          <h3>Express dédié</h3>
+          <p>Un véhicule rien que pour vous, départ immédiat ou créneau garanti. Idéal pour les urgences et marchandises
+            sensibles.</p>
+          <span class="tag">Départ sous 2h</span>
+        </article>
+        <article class="card glass reveal" style="--d:.16s">
+          <div class="card-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="6" width="14" height="10" rx="1" />
+              <path d="M15 9h4l4 4v3h-8z" />
+              <circle cx="6" cy="18" r="2" />
+              <circle cx="18" cy="18" r="2" />
+            </svg></div>
+          <h3>Lot complet</h3>
+          <p>Jusqu'à 33 palettes et 24 tonnes en semi-remorque. Chargement et livraison directs, sans rupture de charge.
+          </p>
+          <span class="tag">13,6 m · 24 t</span>
+        </article>
+        <article class="card glass reveal" style="--d:.24s">
+          <div class="card-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" />
+            </svg></div>
+          <h3>International</h3>
+          <p>Allemagne, Espagne, Italie, Benelux… Un réseau de partenaires sélectionnés pour des livraisons européennes
+            fiables.</p>
+          <span class="tag">48h – 96h</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section container" id="process">
+      <header class="section-head reveal">
+        <p class="eyebrow">Fonctionnement</p>
+        <h2>Simple comme 1, 2, 3, 4</h2>
+      </header>
+      <ol class="steps">
+        <li class="step reveal"><span class="step-n">01</span>
+          <h3>Décrivez vos palettes</h3>
+          <p>Taille, poids, dimensions, quantité : notre formulaire vous guide en 2 minutes.</p>
+        </li>
+        <li class="step reveal" style="--d:.1s"><span class="step-n">02</span>
+          <h3>Recevez votre devis</h3>
+          <p>Un tarif clair et sans surprise, envoyé par notre équipe en moins de 2 heures ouvrées.</p>
+        </li>
+        <li class="step reveal" style="--d:.2s"><span class="step-n">03</span>
+          <h3>Nous enlevons</h3>
+          <p>Notre chauffeur vient chercher vos palettes sur le créneau convenu.</p>
+        </li>
+        <li class="step reveal" style="--d:.3s"><span class="step-n">04</span>
+          <h3>Livraison suivie</h3>
+          <p>Suivi en temps réel puis preuve de livraison signée envoyée par e-mail.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- FORMULAIRE -->
+    <section class="section container" id="devis">
+      <header class="section-head reveal">
+        <p class="eyebrow">Devis en ligne</p>
+        <h2>Décrivez votre expédition</h2>
+        <p class="lead">Renseignez les caractéristiques de vos palettes. Plus c'est précis, plus le devis est juste.</p>
+      </header>
+
+      <div class="quote-layout">
+        <form id="quoteForm" class="quote glass reveal" novalidate>
+          <!-- Trajet -->
+          <fieldset>
+            <legend><span class="num">1</span> Trajet</legend>
+            <div class="grid-2">
+              <label class="field">Ville / code postal de départ
+                <input type="text" name="from" placeholder="Ex : 69007 Lyon" required />
+              </label>
+              <label class="field">Ville / code postal d'arrivée
+                <input type="text" name="to" placeholder="Ex : 75012 Paris" required />
+              </label>
+              <label class="field">Date d'enlèvement souhaitée
+                <input type="date" name="date" id="dateInput" required />
+              </label>
+              <label class="field">Type de service
+                <select name="service">
+                  <option value="messagerie">Messagerie palettisée (J+1 à J+3)</option>
+                  <option value="express">Express dédié</option>
+                  <option value="complet">Lot complet</option>
+                  <option value="international">International</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Palettes -->
+          <fieldset>
+            <legend><span class="num">2</span> Vos palettes</legend>
+            <div id="items" class="items"></div>
+            <button type="button" class="btn btn-ghost btn-add" id="addItem">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Ajouter un autre type de palette
+            </button>
+            <p class="warn" id="warnBox" hidden></p>
+          </fieldset>
+
+          <!-- Options -->
+          <fieldset>
+            <legend><span class="num">3</span> Options de manutention</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="opt" value="Hayon élévateur" /><span>Hayon
+                  élévateur</span></label>
+              <label class="chip"><input type="checkbox" name="opt" value="Prise de rendez-vous" /><span>Prise de
+                  rendez-vous</span></label>
+              <label class="chip"><input type="checkbox" name="opt"
+                  value="Marchandise fragile" /><span>Fragile</span></label>
+              <label class="chip"><input type="checkbox" name="opt" value="Gerbable" /><span>Palettes
+                  gerbables</span></label>
+              <label class="chip"><input type="checkbox" name="opt" value="Température dirigée" /><span>Température
+                  dirigée</span></label>
+              <label class="chip"><input type="checkbox" name="opt" value="Matières dangereuses (ADR)" /><span>Matières
+                  dangereuses (ADR)</span></label>
+              <label class="chip"><input type="checkbox" name="opt" value="Assurance renforcée" /><span>Assurance
+                  renforcée</span></label>
+            </div>
+            <label class="field" style="margin-top:18px">Instructions particulières
+              <textarea name="notes" rows="3"
+                placeholder="Horaires d'ouverture, accès quai, contact sur place…"></textarea>
+            </label>
+          </fieldset>
+
+          <!-- Contact -->
+          <fieldset>
+            <legend><span class="num">4</span> Vos coordonnées</legend>
+            <div class="grid-2">
+              <label class="field">Entreprise
+                <input type="text" name="company" placeholder="Nom de la société" required />
+              </label>
+              <label class="field">Nom du contact
+                <input type="text" name="contact" placeholder="Prénom Nom" required />
+              </label>
+              <label class="field">E-mail
+                <input type="email" name="email" placeholder="vous@entreprise.com" required />
+              </label>
+              <label class="field">Téléphone
+                <input type="tel" name="phone" placeholder="06 00 00 00 00" required />
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn btn-lg">Envoyer ma demande de devis
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+            </svg>
+          </button>
+          <p class="fine">Réponse sous 2 heures ouvrées · Sans engagement</p>
+        </form>
+
+        <!-- Récapitulatif -->
+        <aside class="recap glass reveal" style="--d:.12s" aria-live="polite">
+          <h3>Récapitulatif</h3>
+          <div class="recap-grid">
+            <div><span>Palettes</span><b id="rPallets">0</b></div>
+            <div><span>Poids total</span><b id="rWeight">0 kg</b></div>
+            <div><span>Volume</span><b id="rVolume">0 m³</b></div>
+            <div><span>Mètres linéaires</span><b id="rLdm">0 m</b></div>
+          </div>
+          <div class="truck">
+            <div class="truck-label"><span>Remplissage d'un semi-remorque</span><b id="rFill">0 %</b></div>
+            <div class="truck-bar"><i id="rBar"></i></div>
+          </div>
+          <ul class="recap-list">
+            <li>Dimensions en centimètres, poids par palette en kg.</li>
+            <li>1 mètre linéaire (ldm) = 2,4 m² de plancher.</li>
+            <li>Hauteur maximale standard : 2,20 m.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- RESEAU -->
+    <section class="section container" id="reseau">
+      <header class="section-head reveal">
+        <p class="eyebrow">Notre réseau</p>
+        <h2>Partout en France, partout en Europe</h2>
+      </header>
+      <div class="network">
+        <div class="net-card glass reveal"><strong>96</strong><span>départements desservis</span></div>
+        <div class="net-card glass reveal" style="--d:.08s"><strong>14</strong><span>pays européens</span></div>
+        <div class="net-card glass reveal" style="--d:.16s"><strong>180</strong><span>véhicules connectés</span></div>
+        <div class="net-card glass reveal" style="--d:.24s"><strong>7j/7</strong><span>exploitation &amp;
+            assistance</span></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section container narrow" id="faq">
+      <header class="section-head reveal">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>Tout ce qu'il faut savoir</h2>
+      </header>
+      <div class="faq reveal">
+        <details>
+          <summary>Quelles dimensions de palettes acceptez-vous ?</summary>
+          <p>Palette Europe (120×80), américaine (120×100), demi-palette (80×60) et formats sur mesure. Hauteur maximale
+            de 220 cm et poids jusqu'à 1 000 kg par palette en standard (au-delà, nous consulter).</p>
+        </details>
+        <details>
+          <summary>Sous quel délai recevrai-je mon devis ?</summary>
+          <p>Notre équipe répond en moins de 2 heures ouvrées, avec un prix ferme et les délais de transport.</p>
+        </details>
+        <details>
+          <summary>Mes marchandises sont-elles assurées ?</summary>
+          <p>Toutes les expéditions bénéficient d'une couverture de base. Une assurance renforcée « valeur déclarée »
+            est disponible en option.</p>
+        </details>
+        <details>
+          <summary>Pouvez-vous livrer sans quai ?</summary>
+          <p>Oui, nos véhicules sont équipés de hayons élévateurs et transpalettes. Précisez simplement l'option dans le
+            formulaire.</p>
+        </details>
+        <details>
+          <summary>Puis-je suivre mon envoi ?</summary>
+          <p>Chaque livraison est géolocalisée. Vous recevez les notifications par e-mail et la preuve de livraison
+            signée.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="container">
+      <div class="final-cta glass reveal">
+        <h2>Une palette à envoyer&nbsp;?<br /><em>Nous nous en occupons.</em></h2>
+        <a href="#devis" class="btn btn-lg">Demander un devis</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand"><span class="brand-name">Transporteur<small>Transport &amp;
+              logistique</small></span></a>
+        <p class="fine" style="margin-top:14px;max-width:320px">Votre partenaire pour le transport de palettes, en
+          France et en Europe.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>contact@transport-palette.fr<br />+33 1 23 45 67 89<br />Lun – Ven · 7h – 19h</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <p><a href="#services">Services</a><br /><a href="#devis">Devis</a><br /><a href="#faq">FAQ</a></p>
+      </div>
+    </div>
+    <p class="copy">© <span id="year"></span> Transporteur. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Confirmation -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box glass" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-ico">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#060a12" stroke-width="2.6"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12.5l4.5 4.5L19 7.5" />
+        </svg>
+      </div>
+      <h3 id="modalTitle">Demande envoyée</h3>
+      <p>Merci <b id="mName"></b>, nous revenons vers vous sous 2 heures ouvrées.</p>
+      <p class="ref">Référence : <b id="mRef"></b></p>
+      <button class="btn" id="closeModal">Fermer</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
